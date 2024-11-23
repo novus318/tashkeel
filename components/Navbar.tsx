@@ -6,6 +6,7 @@ import Link from "next/link";
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const menuRef = useRef<any>(null);
 
   // Toggle the menu open/close
@@ -13,29 +14,45 @@ const Navbar = () => {
     setIsMenuOpen(!isMenuOpen);
   };
 
+  // Detect scroll to add backdrop blur effect
+  useEffect(() => {
+    const handleScroll = () => {
+      if (window.scrollY > 0) {
+        setIsScrolled(true);
+      } else {
+        setIsScrolled(false);
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+
+    // Cleanup on unmount
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   // Close the menu when clicking outside of it
   useEffect(() => {
-    const handleClickOutside = (event:any) => {
+    const handleClickOutside = (event: any) => {
       if (menuRef.current && !menuRef.current.contains(event.target)) {
         setIsMenuOpen(false);
       }
     };
 
-    // Add event listener on mount
     document.addEventListener("mousedown", handleClickOutside);
 
-    // Clean up the event listener on unmount
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
 
   return (
-    <header className="bg-primary-foreground">
+    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-primary-foreground/90' : 'bg-primary-foreground'}`}>
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex justify-between">
           {/* Desktop Brand */}
-          <a className="hidden lg:flex items-center" href="index.html">
+          <a className="hidden lg:flex items-center" href="/">
             <img src="/logo.svg" alt="Logo" className="h-24 p-3" />
           </a>
 
@@ -46,17 +63,17 @@ const Navbar = () => {
                 clipPath: "polygon(90% 0%, 100% 0, 100% 100%, 8.5% 100%, 6.5% 0%, 0 0)",
               }}
             >
-              <a href="tel:+011234567890" className="flex items-center space-x-2">
+              <a href="tel:++971505055886" className="flex items-center space-x-2">
                 <Phone className="w-6 h-6" />
-                <span>+01 1234567890</span>
+                <span>+971 505055886</span>
               </a>
-              <a href="mailto:demo@gmail.com" className="flex items-center space-x-2">
+              <a href="mailto:info@tashkeelexpress.com" className="flex items-center space-x-2">
                 <Mail className="w-6 h-6" />
-                <span>demo@gmail.com</span>
+                <span>info@tashkeelexpress.com</span>
               </a>
-              <a href="#" className="flex items-center space-x-2">
+              <a target="_blank" href="https://www.google.com/maps/place/Bin+Shabib+Mall/@25.2805449,55.3799611,18.62z/data=!4m6!3m5!1s0x3e5f5c475ed7622b:0xd9e461a20a362c59!8m2!3d25.2806038!4d55.3806696!16s%2Fg%2F11c763yhrp?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D" className="flex items-center space-x-2">
                 <MapPin className="w-6 h-6" />
-                <span>Denmark Lorem Ipsum</span>
+                <span>AL Qusais, Dubai</span>
               </a>
             </div>
             <div className="hidden lg:flex justify-end items-center mt-4 font-bold tracking-wide">
@@ -120,22 +137,22 @@ const Navbar = () => {
 
         <ul className="flex flex-col items-start ps-10 space-y-4 font-bold">
           <li>
-            <Link href="/" className=" uppercase hover:text-secondary" onClick={toggleMenu}>
+            <Link href="/" className="uppercase hover:text-secondary" onClick={toggleMenu}>
               Home
             </Link>
           </li>
           <li>
-            <Link href="/about" className=" uppercase hover:text-secondary" onClick={toggleMenu}>
+            <Link href="/about" className="uppercase hover:text-secondary" onClick={toggleMenu}>
               About
             </Link>
           </li>
           <li>
-            <Link href="/services" className=" uppercase hover:text-secondary" onClick={toggleMenu}>
+            <Link href="/services" className="uppercase hover:text-secondary" onClick={toggleMenu}>
               Services
             </Link>
           </li>
           <li>
-            <Link href="/contact" className=" uppercase hover:text-secondary" onClick={toggleMenu}>
+            <Link href="/contact" className="uppercase hover:text-secondary" onClick={toggleMenu}>
               Contact
             </Link>
           </li>
