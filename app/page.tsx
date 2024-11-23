@@ -1,7 +1,6 @@
 import HeroSection from "@/components/HeroSection";
 import Navbar from "@/components/Navbar";
 import ServiceGrid from "@/components/ServiceGrid";
-import Image from "next/image";
 
 export default function Home() {
   return (

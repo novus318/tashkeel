@@ -52,9 +52,9 @@ const Navbar = () => {
       <div className="container mx-auto px-4 lg:px-8">
         <div className="flex justify-between">
           {/* Desktop Brand */}
-          <a className="hidden lg:flex items-center" href="/">
+          <Link className="hidden lg:flex items-center" href="/">
             <img src="/logo.svg" alt="Logo" className="h-24 p-3" />
-          </a>
+          </Link>
 
           <div>
             <div
@@ -63,18 +63,18 @@ const Navbar = () => {
                 clipPath: "polygon(90% 0%, 100% 0, 100% 100%, 8.5% 100%, 6.5% 0%, 0 0)",
               }}
             >
-              <a href="tel:++971505055886" className="flex items-center space-x-2">
+              <Link href="tel:++971505055886" className="flex items-center space-x-2">
                 <Phone className="w-6 h-6" />
                 <span>+971 505055886</span>
-              </a>
-              <a href="mailto:info@tashkeelexpress.com" className="flex items-center space-x-2">
+              </Link>
+              <Link href="mailto:info@tashkeelexpress.com" className="flex items-center space-x-2">
                 <Mail className="w-6 h-6" />
                 <span>info@tashkeelexpress.com</span>
-              </a>
-              <a target="_blank" href="https://www.google.com/maps/place/Bin+Shabib+Mall/@25.2805449,55.3799611,18.62z/data=!4m6!3m5!1s0x3e5f5c475ed7622b:0xd9e461a20a362c59!8m2!3d25.2806038!4d55.3806696!16s%2Fg%2F11c763yhrp?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D" className="flex items-center space-x-2">
+              </Link>
+              <Link target="_blank" href="https://www.google.com/maps/place/Bin+Shabib+Mall/@25.2805449,55.3799611,18.62z/data=!4m6!3m5!1s0x3e5f5c475ed7622b:0xd9e461a20a362c59!8m2!3d25.2806038!4d55.3806696!16s%2Fg%2F11c763yhrp?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D" className="flex items-center space-x-2">
                 <MapPin className="w-6 h-6" />
                 <span>AL Qusais, Dubai</span>
-              </a>
+              </Link>
             </div>
             <div className="hidden lg:flex justify-end items-center mt-4 font-bold tracking-wide">
               <ul className="flex space-x-16 text-base">
@@ -106,9 +106,9 @@ const Navbar = () => {
         {/* Navigation Bar */}
         <nav className="flex items-center justify-between">
           {/* Mobile Brand */}
-          <a className="flex lg:hidden items-center" href="index.html">
+          <Link className="flex lg:hidden items-center" href="index.html">
             <img src="/logo.svg" alt="Logo" className="w-36 p-2" />
-          </a>
+          </Link>
 
           {/* Toggle Button for Mobile */}
           <button
@@ -130,9 +130,9 @@ const Navbar = () => {
         className="lg:hidden fixed top-0 left-0 w-2/3 h-full bg-primary-foreground z-10 shadow-lg"
       >
         <div className="flex justify-between items-center p-4">
-          <a href="index.html">
+          <Link href="index.html">
             <img src="/logo.svg" alt="Logo" className="w-32" />
-          </a>
+          </Link>
         </div>
 
         <ul className="flex flex-col items-start ps-10 space-y-4 font-bold">
