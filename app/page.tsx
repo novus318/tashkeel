@@ -1,5 +1,7 @@
 import HeroSection from "@/components/HeroSection";
+import MissionVision from "@/components/Mission-Vision";
 import Navbar from "@/components/Navbar";
+import { OrbitingCirclesBodies } from "@/components/OrbitingCircles";
 import ServiceGrid from "@/components/ServiceGrid";
 
 export default function Home() {
@@ -8,6 +10,8 @@ export default function Home() {
   <Navbar/>
   <HeroSection/>
   <ServiceGrid/>
+  <OrbitingCirclesBodies/>
+  <MissionVision/>
 </div>
   );
 }

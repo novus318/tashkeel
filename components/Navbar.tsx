@@ -48,10 +48,10 @@ const Navbar = () => {
   }, []);
 
   return (
-    <header className={`fixed top-0 left-0 w-full z-50 transition-all duration-300`}>
-      <div className={`container mx-auto px-4 lg:px-8 ${isScrolled ? 'backdrop-blur-md bg-primary-foreground/90' : 'bg-primary-foreground'}`}>
+ <>
+    <header className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-primary-foreground/90' : 'bg-primary-foreground'}`}>
+      <div className={`container mx-auto px-4 lg:px-8`}>
         <div className="flex justify-between">
-          {/* Desktop Brand */}
           <Link className="hidden lg:flex items-center" href="/">
             <img src="/logo.svg" alt="Logo" className="h-24 p-3" />
           </Link>
@@ -120,45 +120,44 @@ const Navbar = () => {
           </button>
         </nav>
       </div>
-
-      {/* Mobile Menu */}
-      <motion.div
-        ref={menuRef}
-        initial={{ x: "-100%" }}
-        animate={{ x: isMenuOpen ? 0 : "-100%" }}
-        transition={{ type: "tween", stiffness: 200 }}
-        className="lg:hidden fixed top-0 left-0 w-2/3 h-full bg-primary-foreground z-10 shadow-lg"
-      >
-        <div className="flex justify-between items-center p-4">
-          <Link href="index.html">
-            <img src="/logo.svg" alt="Logo" className="w-32" />
-          </Link>
-        </div>
-
-        <ul className="flex flex-col items-start ps-10 space-y-4 font-bold">
-          <li>
-            <Link href="/" className="uppercase hover:text-secondary" onClick={toggleMenu}>
-              Home
-            </Link>
-          </li>
-          <li>
-            <Link href="/about" className="uppercase hover:text-secondary" onClick={toggleMenu}>
-              About
-            </Link>
-          </li>
-          <li>
-            <Link href="/services" className="uppercase hover:text-secondary" onClick={toggleMenu}>
-              Services
-            </Link>
-          </li>
-          <li>
-            <Link href="/contact" className="uppercase hover:text-secondary" onClick={toggleMenu}>
-              Contact
-            </Link>
-          </li>
-        </ul>
-      </motion.div>
     </header>
+         <motion.div
+         ref={menuRef}
+         initial={{ x: "-100%" }}
+         animate={{ x: isMenuOpen ? 0 : "-100%" }}
+         transition={{ type: "tween", stiffness: 200 }}
+         className="lg:hidden fixed top-0 left-0 w-2/3 h-full bg-primary-foreground z-30 shadow-lg"
+       >
+         <div className="flex justify-between items-center p-4">
+           <Link href="index.html">
+             <img src="/logo.svg" alt="Logo" className="w-32" />
+           </Link>
+         </div>
+ 
+         <ul className="flex flex-col items-start ps-10 space-y-4 font-bold">
+           <li>
+             <Link href="/" className="uppercase hover:text-secondary" onClick={toggleMenu}>
+               Home
+             </Link>
+           </li>
+           <li>
+             <Link href="/about" className="uppercase hover:text-secondary" onClick={toggleMenu}>
+               About
+             </Link>
+           </li>
+           <li>
+             <Link href="/services" className="uppercase hover:text-secondary" onClick={toggleMenu}>
+               Services
+             </Link>
+           </li>
+           <li>
+             <Link href="/contact" className="uppercase hover:text-secondary" onClick={toggleMenu}>
+               Contact
+             </Link>
+           </li>
+         </ul>
+       </motion.div>
+       </>
   );
 };
 
