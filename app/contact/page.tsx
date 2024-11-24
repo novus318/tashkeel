@@ -36,7 +36,7 @@ const Page = () => {
             Get in <span className="text-primary font-extrabold">Touch</span>
           </h1>
           <p className="mt-5 max-w-xl mx-auto text-xl text-muted-foreground">
-            We're here to help and answer any question you might have. We look forward to hearing from you.
+            We&apos;re here to help and answer any question you might have. We look forward to hearing from you.
           </p>
         </div>
 
