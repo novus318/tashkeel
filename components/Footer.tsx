@@ -14,7 +14,7 @@ const Footer = () => {
               Your trusted partner for business incorporation and consultancy in the UAE. We simplify the process of establishing and growing your business in this dynamic market.
             </p>
             <div className="flex space-x-6 mt-2">
-              <Link href="#" className="text-primary hover:text-secondary transition-colors">
+              <Link href="https://www.facebook.com/share/1Attn3hQ4M/?mibextid=LQQJ4d" target="_blank" className="text-primary hover:text-secondary transition-colors">
                 <Facebook className="h-6 w-6" />
                 <span className="sr-only">Facebook</span>
               </Link>
@@ -22,7 +22,7 @@ const Footer = () => {
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>
-              <Link href="#" className="text-primary hover:text-secondary transition-colors">
+              <Link href="https://www.instagram.com/tashkeelexpress" target="_blank" className="text-primary hover:text-secondary transition-colors">
                 <Instagram className="h-6 w-6" />
                 <span className="sr-only">Instagram</span>
               </Link>
