@@ -22,11 +22,10 @@ const Page = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    // Here you would typically send the form data to your backend
     console.log('Form submitted:', formData)
-    // Reset form after submission
     setFormData({ name: '', email: '', message: '' })
   }
+  
   return (
    <div>
      <Navbar/>
@@ -40,7 +39,6 @@ const Page = () => {
             We&apos;re here to help and answer any question you might have. We look forward to hearing from you.
           </p>
         </div>
-
         <div className="mt-16 bg-white rounded-lg overflow-hidden lg:grid lg:grid-cols-2 lg:gap-4">
           <div className="pt-10 pb-12 px-6 sm:pt-16 sm:px-16 lg:py-16 lg:pr-0 xl:py-20 xl:px-20">
             <div className="lg:self-center">
@@ -141,8 +139,6 @@ const Page = () => {
               <span>info@tashkeelexpress.com</span>
             </Link>
           </div>
-
-          {/* Social Media Links */}
           <div className="border-t border-gray-200 pt-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
