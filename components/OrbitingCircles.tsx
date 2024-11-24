@@ -5,8 +5,8 @@ import OrbitingCircles from './ui/orbiting-circles';
 export function OrbitingCirclesBodies() {
   return (
  <div className='py-10'>
-    <h2 className="text-3xl lg:text-5xl font-bold text-center mb-2">
-          We <span className="text-primary">Work</span> with
+    <h2 className="text-3xl lg:text-5xl  text-center mb-2 font-sans">
+          We <span className="text-primary font-bold">Work</span> with
         </h2>
     <div className="relative flex h-[500px] w-full flex-col items-center justify-center overflow-hidden">
       <OrbitingCircles

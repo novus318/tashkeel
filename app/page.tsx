@@ -3,6 +3,7 @@ import MissionVision from "@/components/Mission-Vision";
 import Navbar from "@/components/Navbar";
 import { OrbitingCirclesBodies } from "@/components/OrbitingCircles";
 import ServiceGrid from "@/components/ServiceGrid";
+import SetUp from "@/components/SetUp";
 
 export default function Home() {
   return (
@@ -11,7 +12,8 @@ export default function Home() {
   <HeroSection/>
   <ServiceGrid/>
   <OrbitingCirclesBodies/>
-  <MissionVision/>
+  <MissionVision/> 
+  <SetUp/>
 </div>
   );
 }
