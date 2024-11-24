@@ -1,3 +1,5 @@
+import Footer from "@/components/Footer";
+import GetInTouch from "@/components/GetinTouch";
 import HeroSection from "@/components/HeroSection";
 import MissionVision from "@/components/Mission-Vision";
 import Navbar from "@/components/Navbar";
@@ -14,6 +16,8 @@ export default function Home() {
   <OrbitingCirclesBodies/>
   <MissionVision/> 
   <SetUp/>
+  <GetInTouch/>
+  <Footer/>
 </div>
   );
 }
