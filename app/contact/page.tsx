@@ -6,6 +6,7 @@ import { MapPin, Phone, Mail, Send, Map, PhoneCall, Facebook, Instagram } from '
 import Meteors from '@/components/ui/meteors'
 import { EnvelopeOpenIcon } from '@radix-ui/react-icons'
 import { FaWhatsapp } from 'react-icons/fa'
+import Link from 'next/link'
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -129,16 +130,16 @@ const Page = () => {
           <div className="space-y-4">
             <div className="flex items-center text-gray-600">
               <Map className="text-primary h-6 w-6 mr-3" />
-              <span>123 Business Avenue, Dubai, UAE</span>
+              <span>Bin shabib mall, office no: M31 AL Qusais Dubai, United Arab Emirates</span>
             </div>
-            <div className="flex items-center text-gray-600">
+            <Link href="tel:++971505055886"  className="flex items-center text-gray-600">
               <PhoneCall className="text-primary h-6 w-6 mr-3" />
-              <span>+971 4 123 4567</span>
-            </div>
-            <div className="flex items-center text-gray-600">
+              <span>+971 505055886</span>
+            </Link>
+            <Link href="mailto:info@tashkeelexpress.com" className="flex items-center text-gray-600">
               <EnvelopeOpenIcon className="text-primary h-6 w-6 mr-3" />
-              <span>info@yourbusiness.com</span>
-            </div>
+              <span>info@tashkeelexpress.com</span>
+            </Link>
           </div>
 
           {/* Social Media Links */}
@@ -146,7 +147,7 @@ const Page = () => {
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
               <a
-                href="https://facebook.com"
+              href="https://www.facebook.com/share/1Attn3hQ4M/?mibextid=LQQJ4d"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-facebook"
@@ -155,7 +156,7 @@ const Page = () => {
                 <Facebook className="h-5 w-5" />
               </a>
               <a
-                href="https://instagram.com"
+            href="https://www.instagram.com/tashkeelexpress"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-instagram"
@@ -164,7 +165,7 @@ const Page = () => {
                 <Instagram className="h-5 w-5" />
               </a>
               <a
-                href="https://wa.me/97141234567"
+                href="https://wa.me/971505055886"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-whatsapp"
