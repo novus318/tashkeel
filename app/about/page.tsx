@@ -1,12 +1,16 @@
+import AboutHead from '@/components/about/AboutHead'
+import BusinessIntro from '@/components/about/BusinessIntro'
+import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
-import UnderDevelopment from '@/components/UnderDevelopment'
 import React from 'react'
 
 const Page = () => {
   return (
    <div>
      <Navbar/>
-     <UnderDevelopment/>
+   <AboutHead/>
+   <BusinessIntro/>
+     <Footer/>
    </div>
   )
 }
