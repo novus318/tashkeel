@@ -23,7 +23,7 @@ export default function GradualSpacing({
   className,
 }: GradualSpacingProps) {
   return (
-    <div>
+    <>
       <AnimatePresence>
         {text.split("").map((char, i) => (
           <motion.span
@@ -39,6 +39,6 @@ export default function GradualSpacing({
           </motion.span>
         ))}
       </AnimatePresence>
-    </div>
+    </>
   );
 }

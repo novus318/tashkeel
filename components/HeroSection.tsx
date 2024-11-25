@@ -10,21 +10,18 @@ const slides = [
     title: 'BUSINESS SETUP IN DUBAI',
     subtitle: 'Your partner in establishing your business in the UAE.',
     description: 'Whether you are starting a new business or expanding an existing one, we offer expert consultancy to ensure your success.',
-    image: '/b3.webp',
   },
   {
     id: '02',
     title: 'EXPERT CONSULTATION',
     subtitle: 'Expert guidance on licensing, visas, and more.',
     description: 'Get in-depth consultations on everything from business licenses to visa requirements, ensuring a smooth entry into the UAE market.',
-    image: '/b3.webp',
   },
   {
     id: '03',
     title: 'CUSTOMIZED SOLUTIONS',
     subtitle: 'Tailored solutions for your business success.',
     description: 'We provide personalized strategies to meet the unique challenges of your business, helping you grow in the competitive market.',
-    image: '/b3.webp',
   },
 ]
 
@@ -46,9 +43,9 @@ const HeroSection = () => {
   return (
     <div className="relative w-full h-[78vh] overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center"
         style={{
-          backgroundImage: `url(${slides[currentSlide].image})`,
+          backgroundImage: `url(/b2.avif)`,
         }}
       />
       <div className="absolute inset-0 bg-gradient-to-r from-secondary-foreground/80 via-secondary-foreground/50 md:from-secondary/50 md:via-secondary-foreground/50 to-transparent" />
@@ -57,10 +54,10 @@ const HeroSection = () => {
           {slides.map((slide, index) => (
             <div
               key={slide.id}
-              className={`transition-transform duration-1000 ease-out ${
+              className={`transition-transform duration-1000 ${
                 index === currentSlide
                   ? 'opacity-100 translate-x-0'
-                  : 'opacity-0 translate-x-24 absolute'
+                  : 'opacity-0 -translate-x-96 absolute'
               }`}
             >
               <div className="max-w-3xl space-y-6">

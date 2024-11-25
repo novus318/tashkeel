@@ -7,6 +7,9 @@
   margin: 0;
   padding: 0;
 }
+.slider{
+  min-height: 78vh;
+}
 
 ::-webkit-scrollbar {
   background-color: transparent;
