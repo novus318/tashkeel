@@ -63,7 +63,7 @@ const Footer = () => {
           rel="noopener noreferrer"
           className="transition-colors duration-300"
         >
-          <img src='/images/winndeal.webp' alt="winndeal" className="inline h-3 ml-1" />
+          <img src='/images/winndeal.webp' alt="winndeal" loading='lazy' className="inline h-3 ml-1" />
         </a>
       </div>
     </footer>

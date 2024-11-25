@@ -49,7 +49,7 @@ const Navbar = () => {
 
   return (
  <>
-    <header className={`fixed top-0 left-0 w-full z-20 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-primary-foreground/90' : 'bg-primary-foreground'}`}>
+    <header className={`fixed top-0 left-0 w-full z-30 transition-all duration-300 ${isScrolled ? 'backdrop-blur-md bg-primary-foreground/90' : 'bg-primary-foreground'}`}>
       <div className={`container mx-auto px-4 lg:px-8`}>
         <div className="flex justify-between">
           <Link className="hidden lg:flex items-center" href="/">
@@ -106,7 +106,7 @@ const Navbar = () => {
         {/* Navigation Bar */}
         <nav className="flex items-center justify-between">
           {/* Mobile Brand */}
-          <Link className="flex lg:hidden items-center" href="index.html">
+          <Link className="flex lg:hidden items-center" href="/">
             <img src="/logo.svg" alt="Logo" className="w-36 p-2" />
           </Link>
 
@@ -129,7 +129,7 @@ const Navbar = () => {
          className="lg:hidden fixed top-0 left-0 w-2/3 h-full bg-primary-foreground z-30 shadow-lg"
        >
          <div className="flex justify-between items-center p-4">
-           <Link href="index.html">
+           <Link href="/">
              <img src="/logo.svg" alt="Logo" className="w-32" />
            </Link>
          </div>

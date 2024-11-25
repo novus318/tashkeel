@@ -2,11 +2,13 @@
 import Footer from '@/components/Footer'
 import Navbar from '@/components/Navbar'
 import { useState } from 'react'
-import { MapPin, Phone, Mail, Send, Map, PhoneCall, Facebook, Instagram } from 'lucide-react'
+import { MapPin, Phone, Mail, Send, Map, PhoneCall, Facebook, Instagram, Loader2 } from 'lucide-react'
 import Meteors from '@/components/ui/meteors'
 import { EnvelopeOpenIcon } from '@radix-ui/react-icons'
 import { FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link'
+import { Toaster } from '@/components/ui/toaster'
+import { toast } from '@/hooks/use-toast'
 
 const Page = () => {
   const [formData, setFormData] = useState({
@@ -14,20 +16,51 @@ const Page = () => {
     email: '',
     message: '',
   })
+  const [isLoading, setIsLoading] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target
     setFormData(prevState => ({ ...prevState, [name]: value }))
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    console.log('Form submitted:', formData)
-    setFormData({ name: '', email: '', message: '' })
-  }
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsLoading(true);
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+  
+      if (response.ok) {
+        setIsLoading(false);
+        toast({
+          variant:'default',
+          title: 'Your message has been sent successfully',
+        })
+        setFormData({ name: '', email: '', message: '' });
+      } else {
+        setIsLoading(false);
+        toast({
+          variant:'destructive',
+          title: 'Failed to send your message. Please try again later.',
+        })
+      }
+    } catch (error) {
+      setIsLoading(false);
+      toast({
+        variant:'destructive',
+        title: 'Failed to send your message. Please try again later.',
+      })
+    }
+  };
   
   return (
    <div>
+      <Toaster />
      <Navbar/>
      <div className="py-12 px-4 sm:px-6 lg:px-8 mt-24 font-sans">
       <div className="max-w-7xl mx-auto">
@@ -46,7 +79,7 @@ const Page = () => {
                 <span className="block">Ready to dive in?</span>
                 <span className="block text-secondary">Send us a message.</span>
               </h2>
-              <form onSubmit={handleSubmit} className="mt-8 space-y-6">
+              <div   className="mt-8 space-y-6">
                 <div>
                   <label htmlFor="name" className="sr-only">
                     Full name
@@ -95,16 +128,18 @@ const Page = () => {
                 </div>
                 <div>
                   <button
-                    type="submit"
+                    onClick={handleSubmit}
+                    disabled={isLoading}
                     className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
                   >
+                  {isLoading ? <Loader2 className='animate-spin'/> : <>
                     <span className="absolute left-0 inset-y-0 flex items-center pl-3">
                       <Send className="h-5 w-5 text-primary-foreground" aria-hidden="true" />
                     </span>
-                    Send Message
+                    Send Message</>}
                   </button>
                 </div>
-              </form>
+              </div>
             </div>
           </div>
           <div className="relative pt-64 pb-10 px-4 sm:pt-48 sm:px-6 lg:px-8 lg:max-w-lg lg:w-full lg:pb-28 xl:pb-32">
