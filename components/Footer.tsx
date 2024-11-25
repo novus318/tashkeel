@@ -18,7 +18,7 @@ const Footer = () => {
                 <Facebook className="h-6 w-6" />
                 <span className="sr-only">Facebook</span>
               </Link>
-              <Link href="#" className="text-primary hover:text-secondary transition-colors">
+              <Link href="https://www.linkedin.com/in/tash-keel-express-6a174933a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target='_blank' className="text-primary hover:text-secondary transition-colors">
                 <Linkedin className="h-6 w-6" />
                 <span className="sr-only">LinkedIn</span>
               </Link>

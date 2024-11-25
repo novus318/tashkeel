@@ -5,7 +5,7 @@ import { useState } from 'react'
 import { MapPin, Phone, Mail, Send, Map, PhoneCall, Facebook, Instagram } from 'lucide-react'
 import Meteors from '@/components/ui/meteors'
 import { EnvelopeOpenIcon } from '@radix-ui/react-icons'
-import { FaWhatsapp } from 'react-icons/fa'
+import { FaLinkedin, FaWhatsapp } from 'react-icons/fa'
 import Link from 'next/link'
 
 const Page = () => {
@@ -142,6 +142,16 @@ const Page = () => {
           <div className="border-t border-gray-200 pt-6">
             <h3 className="text-xl font-semibold text-gray-800 mb-4">Follow Us</h3>
             <div className="flex space-x-4">
+            
+            <a
+              href="https://www.linkedin.com/in/tash-keel-express-6a174933a?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex items-center justify-center w-10 h-10 rounded-full bg-gray-100 hover:bg-gray-200 text-facebook"
+                aria-label="Facebook"
+              >
+                <FaLinkedin className="h-5 w-5" />
+              </a>
               <a
               href="https://www.facebook.com/share/1Attn3hQ4M/?mibextid=LQQJ4d"
                 target="_blank"
