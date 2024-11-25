@@ -1,8 +1,6 @@
 import { ReactNode } from "react";
-import { ArrowRightIcon } from "@radix-ui/react-icons";
-import { motion, useInView } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { cn } from "@/lib/utils";
-import { Button } from "@/components/ui/button";
 
 const cardVariants = {
   hidden: { opacity: 0, y: 50 },
@@ -65,9 +63,9 @@ const BentoCard = ({
     <div>{background}</div>
     <div className="pointer-events-none z-10 flex transform-gpu flex-col gap-1 p-6 transition-all duration-300 group-hover:-translate-y-5">
       <Icon className="h-12 w-12 origin-left transform-gpu text-primary transition-all duration-300 ease-in-out group-hover:scale-75" />
-      <h3 className="text-xl font-semibold text-secondary">
+      <h2 className="text-xl font-semibold text-secondary">
         {name}
-      </h3>
+      </h2>
       <p className="max-w-lg text-secondary-foreground">{description}</p>
     </div>
     <div className="pointer-events-none absolute inset-0 transform-gpu transition-all duration-300 group-hover:bg-black/[.03] group-hover:dark:bg-neutral-800/10" />
