@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import { Suspense } from "react";
 import Spinner from "@/components/Spinner";
+import WhatsAppContactIcon from "@/components/WhatsappContact";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -71,6 +72,7 @@ export default function RootLayout({
       >
       <Suspense fallback={<Spinner />}>
           {children}
+          <WhatsAppContactIcon/>
         </Suspense>
       </body>
     </html>

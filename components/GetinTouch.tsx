@@ -37,7 +37,7 @@ const GetInTouch = () => {
               }}
           >
         <FaWhatsapp size={20} />
-        WhatsApp
+        Chat with Us!
           </motion.button>
         </motion.div>
       </div>
