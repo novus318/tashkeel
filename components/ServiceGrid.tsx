@@ -8,7 +8,7 @@ const features = [
   {
     Icon: BuildingIcon,
     name: "Company registration",
-    description: "We help you establish your company in the UAE with fast and seamless registration processes.",
+    description: "We assist you in establishing your company in the UAE through fast and seamless registration processes.",
     href: "/company-registration",
     cta: "Learn more",
     background: <img className="absolute -right-0 -top-28 md:-top-0 p-32 md:p-20  opacity-80" src="/images/setup-logo.png" alt='Company registration' />,
