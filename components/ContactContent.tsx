@@ -1,65 +1,60 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import Meteors from './ui/meteors'
 import { toast } from '@/hooks/use-toast';
 import { Loader2, Map, PhoneCall, Send } from 'lucide-react';
 import Link from 'next/link';
 import { FaEnvelopeOpen, FaFacebook, FaInstagram, FaLinkedin, FaWhatsapp } from 'react-icons/fa';
+import emailjs from '@emailjs/browser';
 
 const ContactContent = () => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        message: '',
-      })
-      const [isLoading, setIsLoading] = useState(false);
-    
-      const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-        const { name, value } = e.target
-        setFormData(prevState => ({ ...prevState, [name]: value }))
-      }
+  const YOUR_SERVICE_ID:any=process.env.NEXT_PUBLIC_YOUR_SERVICE_ID
+const YOUR_TEMPLATE_ID:any=process.env.NEXT_PUBLIC_YOUR_TEMPLATE_ID
+const YOUR_PUBLIC_KEY:any=process.env.NEXT_PUBLIC_YOUR_PUBLIC_KEY
+const [formData, setFormData] = useState({ name: "", email: "", message: "" });
+const [isLoading, setIsLoading] = useState(false);
+const formRef = useRef<HTMLFormElement | null>(null);
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const { name, value } = e.target;
+  setFormData((prev) => ({ ...prev, [name]: value }));
+};
     
       const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
-        if (!formData.name ||!formData.email ||!formData.message) {
-            toast({
-              variant:'destructive',
-              title: 'All fields are required',
-             description:"Please fill out all the required fields."
+        if (!formData.name || !formData.email || !formData.message) {
+          toast({
+            variant:'destructive',
+            title: 'All fields are required',
+           description:"Please fill out all the required fields."
 
-            })
-            return;
+          })
+        return;
         }
         setIsLoading(true);
         try {
-          const response = await fetch('/api/contact', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData),
-          });
-      
-          if (response.ok) {
-            setIsLoading(false);
+          if (formRef.current) {
+            await emailjs.sendForm(
+              YOUR_SERVICE_ID,
+              YOUR_TEMPLATE_ID,
+              formRef.current,
+              YOUR_PUBLIC_KEY
+            );
             toast({
               variant:'default',
               title: 'Your message has been sent successfully',
             })
-            setFormData({ name: '', email: '', message: '' });
-          } else {
-            setIsLoading(false);
-            toast({
-              variant:'destructive',
-              title: 'Failed to send your message. Please try again later.',
-            })
+            setFormData({ name: "", email: "", message: "" });
           }
-        } catch (error) {
-          setIsLoading(false);
+        } catch (error:any) {
+          console.error(error);
           toast({
             variant:'destructive',
             title: 'Failed to send your message. Please try again later.',
+            description: error.text
           })
+        } finally {
+          setIsLoading(false);
         }
       };
   return (
@@ -80,67 +75,68 @@ const ContactContent = () => {
                 <span className="block">Ready to dive in?</span>
                 <span className="block text-secondary">Send us a message.</span>
               </h2>
-              <div   className="mt-8 space-y-6">
-                <div>
-                  <label htmlFor="name" className="sr-only">
-                    Full name
-                  </label>
-                  <input
-                    id="name"
-                    name="name"
-                    type="text"
-                    required
-                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Full name"
-                    value={formData.name}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="email" className="sr-only">
-                    Email address
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    autoComplete="email"
-                    required
-                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Email address"
-                    value={formData.email}
-                    onChange={handleChange}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="message" className="sr-only">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows={4}
-                    required
-                    className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                    placeholder="Your message"
-                    value={formData.message}
-                    onChange={handleChange}
-                  ></textarea>
-                </div>
-                <div>
-                  <button
-                    onClick={handleSubmit}
-                    disabled={isLoading}
-                    className="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary/70 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                  >
-                  {isLoading ? <Loader2 className='animate-spin'/> : <>
-                    <span className="absolute left-0 inset-y-0 flex items-center pl-3">
-                      <Send className="h-5 w-5 text-primary-foreground" aria-hidden="true" />
-                    </span>
-                    Send Message</>}
-                  </button>
-                </div>
-              </div>
+              <form ref={formRef} onSubmit={handleSubmit} className="mt-8 space-y-6">
+      <div>
+        <label htmlFor="name" className="sr-only">Full Name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          required
+          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Full name"
+          value={formData.name}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="email" className="sr-only">Email Address</label>
+        <input
+          id="email"
+          name="email"
+          type="email"
+          autoComplete="email"
+          required
+          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Email address"
+          value={formData.email}
+          onChange={handleChange}
+        />
+      </div>
+      <div>
+        <label htmlFor="message" className="sr-only">Message</label>
+        <textarea
+          id="message"
+          name="message"
+          rows={4}
+          required
+          className="appearance-none rounded-md relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+          placeholder="Your message"
+          value={formData.message}
+          onChange={handleChange}
+        ></textarea>
+      </div>
+      <div>
+        <button
+          type="submit"
+          disabled={isLoading}
+          className={`group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-primary ${
+            isLoading ? "opacity-70 cursor-not-allowed" : "hover:bg-primary/70"
+          } focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500`}
+        >
+          {isLoading ? (
+            <Loader2 className="animate-spin" />
+          ) : (
+            <>
+              <span className="absolute left-0 inset-y-0 flex items-center pl-3">
+                <Send className="h-5 w-5 text-primary-foreground" aria-hidden="true" />
+              </span>
+              Send Message
+            </>
+          )}
+        </button>
+      </div>
+    </form>
             </div>
           </div>
           <div className="relative pt-64 pb-10 px-4 sm:pt-48 sm:px-6 lg:px-8 lg:max-w-lg lg:w-full lg:pb-28 xl:pb-32">

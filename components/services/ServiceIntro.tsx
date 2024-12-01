@@ -35,7 +35,7 @@ const ServiceIntro = () => {
     />
        <WordPullUp
       className="text-4xl tracking-[-0.02em] text-primary font-sans font-bold md:text-7xl md:leading-[5rem]"
-      words="Tash-keel Expres"
+      words="Tash-keel Express"
     />
           <motion.p
             className="text-xs md:text-base font-sans text-justify"
