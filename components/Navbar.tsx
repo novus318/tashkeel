@@ -71,9 +71,9 @@ const Navbar = () => {
                 <Mail className="w-6 h-6" />
                 <span>info@tashkeelexpress.com</span>
               </Link>
-              <Link target="_blank" href="https://www.google.com/maps/place/Bin+Shabib+Mall/@25.2805449,55.3799611,18.62z/data=!4m6!3m5!1s0x3e5f5c475ed7622b:0xd9e461a20a362c59!8m2!3d25.2806038!4d55.3806696!16s%2Fg%2F11c763yhrp?entry=ttu&g_ep=EgoyMDI0MTExOS4yIKXMDSoASAFQAw%3D%3D" className="flex items-center space-x-2">
+              <Link target="_blank" href="https://maps.app.goo.gl/RzPtNYh1EWBrGW1s7" className="flex items-center space-x-2">
                 <MapPin className="w-6 h-6" />
-                <span>AL Qusais, Dubai</span>
+                <span>Al Karama, Dubai</span>
               </Link>
             </div>
             <div className="hidden lg:flex justify-end items-center mt-4 font-bold tracking-wide">
