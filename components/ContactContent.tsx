@@ -149,7 +149,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
                 marginHeight={0}
                 marginWidth={0}
                 scrolling="no"
-                src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1803.8519406196583!2d55.3799611!3d25.2805449!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f5c475ed7622b%3A0xd9e461a20a362c59!2sBin%20Shabib%20Mall!5e0!3m2!1sen!2sin!4v1732443639244!5m2!1sen!2sin"
+               src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3608.539625539951!2d55.3083734!3d25.252426600000003!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e5f43d1e679d7e7%3A0x799bba9d9819ac9e!2sGrowbox%20Business%20Center%20L.L.C!5e0!3m2!1sen!2sin!4v1764352105545!5m2!1sen!2sin"
                style={{ filter: 'grayscale(1) contrast(1.2) opacity(0.9)' }}
               ></iframe>
             </div>
@@ -160,7 +160,7 @@ const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElemen
           <div className="space-y-4">
             <div className="flex items-center text-gray-600">
               <Map className="text-primary h-6 w-6 mr-3" />
-              <span>Bin shabib mall, office no: M31 AL Qusais Dubai, United Arab Emirates</span>
+              <span>Hamsah Complex O - Growbox Group,1st Floor - Block, 4-B Khalid Bin Al Waleed Rd - Al Karama - Dubai - United Arab Emirates</span>
             </div>
             <Link href="tel:++971505055886"  className="flex items-center text-gray-600">
               <PhoneCall className="text-primary h-6 w-6 mr-3" />
